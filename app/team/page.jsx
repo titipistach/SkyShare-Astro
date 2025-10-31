@@ -179,7 +179,7 @@ export default function Team() {
           </p>
           
           <div className="cta-section reveal-on-scroll">
-            <Link href="/rent-telescope" prefetch className="btn-primary">Book Your Night - $99</Link>
+            <Link href="/rent-telescope" prefetch className="btn-primary">Book Your Night</Link>
             <Link href="/#faq" className="btn-secondary">Learn More</Link>
           </div>
         </section>
