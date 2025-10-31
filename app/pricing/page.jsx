@@ -23,6 +23,25 @@ export default function Pricing() {
         starfield.appendChild(star)
       }
     }
+
+    // Révélation au scroll (générique)
+    const toReveal = document.querySelectorAll(
+      'main section, .pricing-card, .pack-card, .info-item, .cta-section'
+    )
+    toReveal.forEach(el => el.classList.add('reveal-on-scroll'))
+
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view')
+          revealObserver.unobserve(entry.target)
+        }
+      })
+    }, { root: null, rootMargin: '0px 0px -5% 0px', threshold: 0.15 })
+
+    toReveal.forEach(el => revealObserver.observe(el))
+
+    return () => revealObserver.disconnect()
   }, [])
 
   return (

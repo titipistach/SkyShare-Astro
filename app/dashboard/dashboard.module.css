@@ -1,0 +1,317 @@
+.dashboardRoot {}
+
+/* Scope all dashboard styles under .dashboardRoot to avoid leaking */
+.dashboardRoot :global(.dashboard-container) {
+  display: grid !important;
+  grid-template-columns: 250px 1fr;
+  gap: 2rem;
+  max-width: 1400px;
+  margin: 2rem auto;
+  padding: 0 20px;
+  min-height: calc(100vh - 160px);
+  border: 0 solid transparent; /* debug off */
+}
+
+/* Neutraliser les styles globaux des sections sur le dashboard */
+.dashboardRoot :global(section) {
+  padding: 0 !important;
+  margin: 0 0 2rem 0 !important;
+  max-width: none !important;
+  text-align: left !important;
+}
+
+.dashboardRoot :global(.dashboard-sidebar) {
+  width: 260px;
+  background: rgba(20, 20, 20, 0.9);
+  border-right: 1px solid rgba(255, 136, 0, 0.2);
+  padding: 2rem 1rem;
+  backdrop-filter: blur(10px);
+  grid-column: 1 / 2;
+  position: sticky;
+  top: 100px;
+  height: fit-content;
+}
+
+.dashboardRoot :global(.nav-item) {
+  padding: 1rem 1.5rem;
+  margin: 0.5rem 0;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  color: #ffffff;
+}
+
+.dashboardRoot :global(.nav-item:hover) {
+  background: rgba(255, 136, 0, 0.1);
+  transform: translateX(5px);
+}
+
+.dashboardRoot :global(.nav-item.active) {
+  background: #FF8800;
+  border-left: 3px solid #FF8800;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.dashboardRoot :global(.nav-icon) { 
+  font-size: 1.2rem; 
+}
+
+.dashboardRoot :global(.dashboard-main) { padding-bottom: 3rem; grid-column: 2 / 3; }
+
+.dashboardRoot :global(h1.page-title) {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: #FF8800;
+  text-align: left;
+  font-weight: bold;
+}
+
+.dashboardRoot :global(.credits-widget) {
+  background: linear-gradient(135deg, rgba(255, 136, 0, 0.2), rgba(255, 102, 0, 0.1));
+  border: 2px solid #FF8800;
+  border-radius: 12px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.dashboardRoot :global(.credits-header) {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+}
+.dashboardRoot :global(.credits-count) { 
+  font-size: 3rem; 
+  font-weight: bold; 
+  color: #FF8800; 
+  line-height: 1; 
+  margin-bottom: 0;
+}
+.dashboardRoot :global(.credits-label) { 
+  color: #ccc; 
+  font-size: 1.2rem;
+  margin-top: 0.5rem;
+}
+.dashboardRoot :global(.credits-expiry) { 
+  color: #aaa; 
+  font-size: 0.9rem; 
+  margin-bottom: 1rem; 
+}
+
+.dashboardRoot :global(.nights-visual) { 
+  display: flex; 
+  flex-direction: row;
+  gap: 0.5rem; 
+  margin-bottom: 1rem; 
+}
+.dashboardRoot :global(.night-icon) { 
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+}
+.dashboardRoot :global(.night-icon.used) {
+  background: rgba(128, 0, 128, 0.8);
+  color: #fff;
+}
+.dashboardRoot :global(.night-icon.available) {
+  background: #FF8800;
+  color: #000;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+.dashboardRoot :global(.credits-widget .btn-primary) {
+  background: #FF8800;
+  color: #000;
+  border: none;
+  padding: 0.8rem 2rem;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: inline-block;
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+.dashboardRoot :global(.credits-widget .btn-primary:hover) {
+  background: #FF9900;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 20px rgba(255, 136, 0, 0.5);
+}
+
+.dashboardRoot :global(.stats-grid) {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.dashboardRoot :global(.stat-card) {
+  background: rgba(20, 20, 20, 0.8);
+  border: 1px solid rgba(255, 136, 0, 0.3);
+  border-radius: 12px;
+  padding: 1.5rem;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s;
+  min-height: 170px;
+}
+
+.dashboardRoot :global(.stat-card:hover) {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(255, 136, 0, 0.3);
+}
+.dashboardRoot :global(.stat-label) { color: #aaa; font-size: 0.9rem; margin-bottom: 0.5rem; }
+.dashboardRoot :global(.stat-value) { font-size: 2rem; font-weight: bold; color: #FF8800; margin-bottom: 0.5rem; }
+.dashboardRoot :global(.stat-subtext) { color: #666; font-size: 0.85rem; }
+
+.dashboardRoot :global(.countdown) { display: flex; gap: 1rem; margin-top: 1rem; }
+.dashboardRoot :global(.countdown-item) { text-align: center; }
+.dashboardRoot :global(.countdown-value) { font-size: 2rem; font-weight: bold; color: #FF8800; line-height: 1; }
+.dashboardRoot :global(.countdown-label) { font-size: 0.75rem; color: #D0D0D0; margin-top: 0.25rem; }
+
+.dashboardRoot :global(.progress-bar) { 
+  width: 100%;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-top: 1rem;
+}
+.dashboardRoot :global(.progress-fill) { 
+  height: 100%;
+  background: linear-gradient(90deg, #FF8800, #FF6600);
+  border-radius: 10px;
+  transition: width 0.3s;
+}
+
+.dashboardRoot :global(.section) {
+  margin-bottom: 3rem;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(252, 163, 17, 0.3);
+  padding: 1.75rem;
+}
+.dashboardRoot :global(.section-header) { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem; }
+.dashboardRoot :global(.section-title) {
+  font-family: 'Orbitron', monospace;
+  font-size: clamp(1.4rem, 2.2vw, 1.8rem);
+  color: #FFFFFF;
+  letter-spacing: 0.02em;
+  text-align: center;
+}
+.dashboardRoot :global(.view-all) { color: #FCA311; font-size: .9rem; text-decoration: none; border: 1px solid rgba(252,163,17,.35); padding: .35rem .6rem; }
+.dashboardRoot :global(.view-all:hover) { background: rgba(252,163,17,.1); }
+
+.dashboardRoot :global(.booking-card) {
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(252, 163, 17, 0.3);
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.dashboardRoot :global(.booking-info) { flex: 1; }
+.dashboardRoot :global(.booking-date) {
+  color: #E6E6E6;
+  margin-bottom: 0.35rem;
+  font-weight: 600;
+}
+.dashboardRoot :global(.booking-target) {
+  color: #FFFFFF;
+  margin-bottom: 0.35rem;
+}
+.dashboardRoot :global(.booking-status) { display: inline-block; padding: 0.25rem 0.75rem; border-radius: 0; font-size: 0.85rem; font-weight: 600; }
+.dashboardRoot :global(.status-upcoming) { background: rgba(252,163,17,0.2); color: #FCA311; border: 1px solid rgba(252,163,17,0.5); }
+.dashboardRoot :global(.status-pending) { background: rgba(255,193,7,0.2); color: #FFC107; border: 1px solid rgba(255,193,7,0.5); }
+.dashboardRoot :global(.status-completed) { background: rgba(76,175,80,0.2); color: #4CAF50; border: 1px solid rgba(76,175,80,0.5); }
+.dashboardRoot :global(.booking-actions) { display: flex; gap: 0.5rem; }
+.dashboardRoot :global(.btn-small) {
+  padding: 0.55rem 1rem;
+  background: rgba(252,163,17,0.1);
+  border: 1px solid rgba(252,163,17,0.35);
+  color: #FCA311;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-family: 'Orbitron', monospace;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+.dashboardRoot :global(.btn-small:hover) { background: rgba(252,163,17,0.18); border-color: #FCA311; color: #000000; }
+
+.dashboardRoot :global(.data-gallery) { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1.5rem; }
+.dashboardRoot :global(.data-card) { background: rgba(0,0,0,0.4); border: 1px solid rgba(252,163,17,0.3); cursor: pointer; transition: all 0.3s ease; }
+.dashboardRoot :global(.data-card:hover) { transform: translateY(-5px); border-color: #FCA311; }
+.dashboardRoot :global(.data-image) { aspect-ratio: 1; display: flex; align-items: center; justify-content: center; font-size: 4rem; background: rgba(252,163,17,0.05); }
+.dashboardRoot :global(.data-info) { padding: 1rem; }
+.dashboardRoot :global(.data-name) { color: #FFFFFF; font-weight: 700; margin-bottom: 0.35rem; letter-spacing: .01em; }
+.dashboardRoot :global(.data-date) { color: #D0D0D0; font-size: 0.85rem; margin-bottom: 0.6rem; }
+.dashboardRoot :global(.data-download) { color: #FCA311; font-size: 0.9rem; text-decoration: none; display: inline-block; }
+.dashboardRoot :global(.data-download:hover) { text-decoration: underline; }
+
+/* Add-card dashed */
+.dashboardRoot :global(.add-card) {
+  border: 2px dashed rgba(252,163,17,.45) !important;
+  background: linear-gradient(135deg, rgba(252,163,17,.06), rgba(255,215,0,.04));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.dashboardRoot :global(.add-card .data-image) { background: transparent; }
+.dashboardRoot :global(.add-card .add-cta) { text-align: center; color: #FCA311; }
+
+@media (max-width: 1024px) {
+  .dashboardRoot :global(.dashboard-container) { grid-template-columns: 1fr; }
+  .dashboardRoot :global(.dashboard-sidebar) { position: static; display: flex; overflow-x: auto; padding: 1rem 0; }
+  .dashboardRoot :global(.nav-item) { white-space: nowrap; flex-shrink: 0; }
+  .dashboardRoot :global(.stats-grid) { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .dashboardRoot :global(.credits-header) { flex-direction: column; gap: 1rem; }
+  .dashboardRoot :global(.stats-grid) { grid-template-columns: 1fr; }
+  .dashboardRoot :global(.booking-card) { flex-direction: column; align-items: flex-start; gap: 1rem; }
+  .dashboardRoot :global(.data-gallery) { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* Input fields */
+.dashboardRoot :global(.input-field) {
+  width: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 136, 0, 0.3);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  color: #fff;
+  font-size: 1rem;
+  font-family: inherit;
+  transition: all 0.3s;
+}
+
+.dashboardRoot :global(.input-field:focus) {
+  outline: none;
+  border-color: #FF8800;
+  box-shadow: 0 0 0 3px rgba(255, 136, 0, 0.1);
+}
+
+.dashboardRoot :global(.input-field::placeholder) {
+  color: #666;
+}
+
+.dashboardRoot :global(textarea.input-field) {
+  resize: vertical;
+  min-height: 100px;
+}

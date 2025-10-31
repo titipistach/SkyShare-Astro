@@ -10,7 +10,6 @@ export default function Footer() {
         <Link href="/astrophotography-dataset">Astrophotography Dataset</Link>
         <Link href="/pricing">Pricing</Link>
         <a href="https://www.skyshare-astro.com/astrophotography-data/" target="_blank" rel="noopener noreferrer">Gallery</a>
-        <Link href="/#blog">Blog</Link>
         <Link href="/team">Team</Link>
         <a href="https://www.skyshare-astro.com/remote-telescope-faq/" target="_blank" rel="noopener noreferrer">Contact</a>
         <Link href="/#faq">FAQ</Link>

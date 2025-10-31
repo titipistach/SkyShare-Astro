@@ -1323,6 +1323,155 @@ p, .section-subtitle {
     padding: 7rem 5%; /* avant 5rem → plus d'air entre les blocs */
 }
 
+/* === Révélations au scroll (générique pour toutes pages) === */
+.reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal-on-scroll.in-view {
+    opacity: 1;
+    transform: none;
+}
+
+/* FAQ CTA centrée */
+.faq-cta {
+    text-align: center;
+}
+.faq-cta .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* =============================
+   Dual Offers (Home section)
+   ============================= */
+.dual-offers {
+    background: transparent;
+    padding: 5rem 5%;
+}
+
+.dual-offers-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.offers-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(300px, 1fr));
+    gap: 2rem;
+    margin: 3rem auto;
+}
+
+.offer-card {
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(252, 163, 17, 0.3);
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s ease;
+    border-radius: 0;
+    position: relative;
+}
+
+.offer-card.offer-rent {
+    border: 2px solid #FCA311;
+}
+
+.offer-card:hover {
+    transform: translateY(-8px);
+    border-color: #FCA311;
+    box-shadow: 0 15px 30px rgba(252, 163, 17, 0.2);
+}
+
+.offer-badge {
+    position: absolute;
+    top: -12px;
+    left: 1.25rem;
+    background: #FCA311;
+    color: #000000;
+    font-weight: 700;
+    padding: 0.25rem 0.6rem;
+    border: 1px solid rgba(0,0,0,0.35);
+    border-radius: 0;
+}
+
+.offer-header-space { min-height: 120px; margin-bottom: 1.25rem; }
+
+.offer-title {
+    font-family: 'Orbitron', monospace;
+    font-size: 1.8rem;
+    color: #FCA311;
+    margin-bottom: 0.75rem;
+    font-weight: 700;
+    text-align: center;
+}
+
+.offer-title.alt { color: #FCA311; }
+
+.offer-desc {
+    color: #d0d0d0;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    min-height: 64px;
+    text-align: center;
+}
+
+.offer-price {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+    min-height: 40px;
+}
+
+.price-main { font-size: 2.4rem; font-weight: 800; color: #FCA311; }
+.price-sub  { font-size: 1rem;  color: #b0b0b0; }
+
+.offer-features {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 2rem;
+    flex-grow: 1;
+}
+.offer-features li {
+    color: #E6E6E6;
+    margin-bottom: 0.75rem;
+    position: relative;
+    padding-left: 1.5rem;
+}
+.offer-features li::before {
+    content: '✓';
+    color: #FCA311;
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+}
+.offer-features.alt li::before { color: #10B981; }
+
+.offer-btn { width: 100%; margin-top: auto; }
+
+.offer-help {
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(252, 163, 17, 0.3);
+    padding: 2rem;
+    margin-top: 2rem;
+    max-width: 1072px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    border-radius: 0;
+}
+.offer-help h3 { color: #FCA311; font-size: 1.3rem; margin-bottom: 1rem; }
+.offer-help p  { color: #D0D0D0; line-height: 1.6; max-width: 1000px; margin: 0 auto; }
+
+@media (max-width: 900px) {
+    .offers-grid { grid-template-columns: 1fr; }
+}
+
 /* Hamburger (mobile) */
 .hamburger {
     display: none;

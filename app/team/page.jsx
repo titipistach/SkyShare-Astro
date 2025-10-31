@@ -42,7 +42,6 @@ export default function Team() {
 
   return (
     <>
-      <a href="#main-content" className="skip-to-content">Skip to main content</a>
       <div className="starfield" id="starfield"></div>
       <Header />
       

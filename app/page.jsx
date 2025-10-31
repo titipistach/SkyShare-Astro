@@ -68,6 +68,40 @@ export default function HomePage() {
         video.play().catch(e => console.error('Play failed:', e))
       }, 1000)
     }
+
+    // Révélation au scroll (générique)
+    const toReveal = document.querySelectorAll(
+      'main section, .feature-card, .pricing-card, .home-price-card, .offer-card, .faq-item, .testimonial-card'
+    )
+    toReveal.forEach(el => el.classList.add('reveal-on-scroll'))
+
+    // Fallback + marquer visibles au chargement
+    const markIfVisible = (el) => {
+      const rect = el.getBoundingClientRect()
+      const viewportH = typeof window !== 'undefined' ? window.innerHeight : 800
+      if (rect.top < viewportH * 0.9) el.classList.add('in-view')
+    }
+
+    if ('IntersectionObserver' in window) {
+      const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in-view')
+            revealObserver.unobserve(entry.target)
+          }
+        })
+      }, { root: null, rootMargin: '0px 0px -5% 0px', threshold: 0.1 })
+
+      toReveal.forEach(el => {
+        markIfVisible(el)
+        revealObserver.observe(el)
+      })
+
+      return () => revealObserver.disconnect()
+    } else {
+      // Pas d'IO: afficher directement
+      toReveal.forEach(el => el.classList.add('in-view'))
+    }
   }, [])
 
   return (
